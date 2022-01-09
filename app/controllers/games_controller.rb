@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @game = Game.new
-    room_id = @game.create_slug
+    room_id = Game.create_slug
     redirect_to "/#{room_id}"
   end
 

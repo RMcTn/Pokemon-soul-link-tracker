@@ -3,7 +3,7 @@ class Game < ApplicationRecord
   #before_validation :create_slug, on: :create
   has_many :teams, dependent: :delete_all
 
-  def create_slug
+  def self.create_slug
     characters = Array("A".."Z") + Array("a".."z") + Array("0".."9")
     str = ""
     for i in 0..7
