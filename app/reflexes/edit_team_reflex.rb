@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class EditTeamReflex < ApplicationReflex
-  include CableReady::Broadcaster
   def edit_name(name, room_id)
     team_id = element.dataset[:id].to_i
     @game = Game.find_by(room_id: room_id)
@@ -14,7 +13,7 @@ class EditTeamReflex < ApplicationReflex
       selector: "#team-#{team_id}-name",
       value: "#{name}"
     )
-    cable_ready.broadcast
+    cable_ready[channel_name].broadcast
   end
   # Add Reflex methods in this file.
   #

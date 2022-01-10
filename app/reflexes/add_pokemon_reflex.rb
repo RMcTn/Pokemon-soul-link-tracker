@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class AddPokemonReflex < ApplicationReflex
-  include CableReady::Broadcaster
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -48,7 +47,7 @@ class AddPokemonReflex < ApplicationReflex
       selector: ".teams-container",
       html: GamesController.render(partial: "teams", locals: {teams: @game.teams})
     )
-    cable_ready.broadcast
+    cable_ready[channel_name].broadcast
   end
 
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class AddTeamReflex < ApplicationReflex
-  include CableReady::Broadcaster
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -57,7 +56,7 @@ class AddTeamReflex < ApplicationReflex
       cable_ready[channel_name].remove(
         selector: ".info"
       )
-      cable_ready.broadcast
+      cable_ready[channel_name].broadcast
     end
 
   end

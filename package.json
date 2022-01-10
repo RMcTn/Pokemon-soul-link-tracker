@@ -1,5 +1,7 @@
 {
-  "engines": {"node": "14.x"},
+  "engines": {
+    "node": "14.x"
+  },
   "name": "soul_link",
   "private": true,
   "dependencies": {
@@ -9,7 +11,7 @@
     "@rails/webpacker": "4.3.0",
     "cable_ready": "^4.4.0-pre1",
     "stimulus": "^1.1.1",
-    "stimulus_reflex": "3.3.0",
+    "stimulus_reflex": "3.4.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

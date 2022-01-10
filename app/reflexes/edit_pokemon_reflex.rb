@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class EditPokemonReflex < ApplicationReflex
-  include CableReady::Broadcaster
 
   def edit(name, room_id)
     pokemon_id = element.dataset[:id].to_i
@@ -15,7 +14,7 @@ class EditPokemonReflex < ApplicationReflex
         selector: "#pokemon-#{pokemon_id}",
         value: "#{name}"
       )
-      cable_ready.broadcast
+      cable_ready[channel_name].broadcast
     end
   end
 
@@ -34,7 +33,7 @@ class EditPokemonReflex < ApplicationReflex
         selector: "#pokemon-#{pokemon_id}-container",
         html: GamesController.render(partial: "pokemon", locals: {pokemon: @pokemon})
       )
-      cable_ready.broadcast
+      cable_ready[channel_name].broadcast
     else
       # TODO return an error or something
     end
@@ -72,6 +71,7 @@ class EditPokemonReflex < ApplicationReflex
         selector: ".teams-container",
         html: GamesController.render(partial: "teams", locals: {teams: @game.teams})
       )
+      cable_ready[channel_name].broadcast
     end
   end
 
@@ -94,6 +94,7 @@ class EditPokemonReflex < ApplicationReflex
         selector: ".teams-container",
         html: GamesController.render(partial: "teams", locals: {teams: @game.teams})
       )
+      cable_ready[channel_name].broadcast
     end
   end
 
@@ -112,7 +113,7 @@ class EditPokemonReflex < ApplicationReflex
         selector: ".teams-container",
         html: GamesController.render(partial: "teams", locals: {teams: @game.teams})
       )
-
+      cable_ready[channel_name].broadcast
   end
 
   # Add Reflex methods in this file.
