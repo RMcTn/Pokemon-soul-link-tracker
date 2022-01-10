@@ -26,6 +26,10 @@ export default class extends ApplicationController {
 		this.stimulate("Edit_Team#edit_name", newName, this.getRoomId());
   	}
 
+  	removeTeam(event) {
+  		this.stimulate("Edit_Team#remove_team", this.getRoomId());
+  	}
+
   /* Reflex specific lifecycle methods.
    *
    * For every method defined in your Reflex class, a matching set of lifecycle methods become available

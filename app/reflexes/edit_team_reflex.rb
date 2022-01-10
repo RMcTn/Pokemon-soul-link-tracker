@@ -15,6 +15,20 @@ class EditTeamReflex < ApplicationReflex
     )
     cable_ready[channel_name].broadcast
   end
+
+  def remove_team(room_id)
+    team_id = element.dataset[:id].to_i
+    @game = Game.find_by(room_id: room_id)
+    @team = @game.teams.find(team_id)
+    return if @team.nil?
+
+    @team.destroy
+    channel_name = "game-#{room_id}"
+    cable_ready[channel_name].remove(
+      selector: "#team-#{team_id}"
+    )
+    cable_ready[channel_name].broadcast
+  end
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
