@@ -30,24 +30,13 @@ class AddTeamReflex < ApplicationReflex
       pokemon_count = @game.teams.first.pokemons.count
       
       channel_name = "game-#{room_id}"
-      pokemon_count.times do |current_pokemon_index|
+      @game.teams.first.pokemons.each do |temp_pokemon|
         unless @team.pokemons.count >= 100
-          @pokemon = @team.pokemons.new(nickname: "", pokedex_id: 1)
-          @pokemon_status_already_set = false
-          @game.teams.each do |team| 
-            unless team == @team 
-              temp_pokemon = team.pokemons.order(:created_at)[current_pokemon_index]
-                unless @pokemon_status_already_set
-                  @pokemon.is_alive = temp_pokemon.is_alive?
-                  @pokemon.is_boxed = temp_pokemon.is_boxed?
-                  @pokemon_status_already_set = true
-                end
-                Link.create(pokemon1: temp_pokemon, pokemon2: @pokemon)
-                Link.create(pokemon1: @pokemon, pokemon2: temp_pokemon)
-            end
-          end
+          link_row_id = temp_pokemon.link_row_id
+          @pokemon = @team.pokemons.create(nickname: "", pokedex_id: 1, link_row_id: link_row_id, is_alive: temp_pokemon.is_alive?, is_boxed: temp_pokemon.is_boxed?)
         end
       end
+
       cable_ready[channel_name].insert_adjacent_html(
         # TODO This likely needs a specific id (use team id on the selector?)
         selector: ".teams-container",

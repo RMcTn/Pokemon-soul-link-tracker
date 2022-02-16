@@ -29,17 +29,12 @@ class AddPokemonReflex < ApplicationReflex
     
     pokemons = []
     channel_name = "game-#{room_id}"
+
+    link_row = LinkRow.create
     @game.teams.each do |team|
       unless team.pokemons.count >= 100
-        pokemon = team.pokemons.create(nickname: "", pokedex_id: 1, is_alive: true)
+        pokemon = team.pokemons.create(nickname: "", pokedex_id: 1, is_alive: true, link_row_id: link_row.id)
         pokemons.push(pokemon)
-      end
-    end
-
-    # TODO Possible optimization here if performance is bad
-    pokemons.each_with_index do |pokemon, current_pokemon|
-      (0..pokemons.length).each do |i|
-        link = Link.create(pokemon1: pokemon, pokemon2: pokemons[i]) unless i == current_pokemon 
       end
     end
 

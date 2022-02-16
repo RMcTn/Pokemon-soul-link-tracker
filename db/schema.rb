@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_095512) do
+ActiveRecord::Schema.define(version: 2022_02_16_105202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2020_12_23_095512) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["room_id"], name: "index_games_on_room_id", unique: true
+  end
+
+  create_table "link_rows", force: :cascade do |t|
   end
 
   create_table "links", force: :cascade do |t|
@@ -39,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_12_23_095512) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_boxed", default: false, null: false
+    t.bigint "link_row_id"
+    t.index ["link_row_id"], name: "index_pokemons_on_link_row_id"
     t.index ["team_id"], name: "index_pokemons_on_team_id"
   end
 
@@ -52,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_095512) do
 
   add_foreign_key "links", "pokemons", column: "pokemon1_id", on_delete: :cascade
   add_foreign_key "links", "pokemons", column: "pokemon2_id", on_delete: :cascade
+  add_foreign_key "pokemons", "link_rows"
   add_foreign_key "pokemons", "teams", on_delete: :cascade
   add_foreign_key "teams", "games", on_delete: :cascade
 end

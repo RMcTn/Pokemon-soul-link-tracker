@@ -1,0 +1,2 @@
+class LinkRow < ApplicationRecord
+end
