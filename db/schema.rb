@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_105202) do
+ActiveRecord::Schema.define(version: 2022_06_25_205408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2022_02_16_105202) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.index ["game_id"], name: "index_teams_on_game_id"
+  end
+
+  create_table "usage_stats", force: :cascade do |t|
+    t.integer "gamesWithMultiplePokemon", null: false
+    t.integer "gamesWithMultipleTeams", null: false
+    t.integer "gamesWithAtLeastOnePokemon", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "links", "pokemons", column: "pokemon1_id", on_delete: :cascade
