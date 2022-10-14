@@ -22,5 +22,5 @@
 <% end %>
 
 <div class="teams-container">
-  <%= render @game.teams %>
+  <%= render @game.teams.order_by_id %>
 </div>

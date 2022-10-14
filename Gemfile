@@ -61,6 +61,9 @@ gem "dotenv-rails", "~> 2.7"
 
 gem "poke-api-v2", "~> 0.1.1"
 
-
 gem "rack-attack", "~> 6.3"
+
+gem "turbo-rails"
+
+gem "turbo-rails"
 

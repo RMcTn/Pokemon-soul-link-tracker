@@ -10,15 +10,15 @@
   <% end %>
 
   <div class="pokemons-container">
-    <%= render team.pokemons.alive, team: team %>
+    <%= render team.pokemons.alive.order_by_id, team: team %>
   </div>
 
   <div class="dead-pokemons-container">
-    <%= render team.pokemons.dead, team: team %>
+    <%= render team.pokemons.dead.order_by_id, team: team %>
   </div>
 
   <div class="boxed-pokemons-container">
-    <%= render team.pokemons.boxed, team: team %>
+    <%= render team.pokemons.boxed.order_by_id, team: team %>
   </div>
 </div>
 <!--<div id="team-<%#= team.id %>" class="team">-->
