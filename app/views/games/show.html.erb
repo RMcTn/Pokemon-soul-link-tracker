@@ -1,5 +1,5 @@
 <div class="warning-flash">This site will be unavailable from November 28th 2022 due to Heroku removing their free tier</div>
-<% unless @game.teams.count >= 6 %>
+<% unless @game.teams&.count >= 6 %>
   <button class="add-player-button" data-controller="add-team" data-action="add-team#add">Add player</button>
 <% end %>
 
@@ -13,4 +13,6 @@
   </div>
 <% end %>
 
-<%= render partial: "teams", locals: {teams: @game.teams} %>
+
+<%= render @game.teams %>
+<%#= render partial: "teams", locals: {teams: @game.teams} %>

@@ -8,5 +8,9 @@ class Game < ApplicationRecord
     return SecureRandom.alphanumeric(7)
   end
 
-    # TODO Allow params room_id. check for game with room id and if last access/update > threshold, overwrite
+  def to_param
+    room_id
+  end
+
+  # TODO Allow params room_id. check for game with room id and if last access/update > threshold, overwrite
 end

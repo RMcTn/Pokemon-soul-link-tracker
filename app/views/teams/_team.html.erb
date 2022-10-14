@@ -1,0 +1,16 @@
+Team <%= team.id %>
+<br>
+name <%= team.name %>
+<br>
+Belongs to game <%= team.game.room_id %>
+<%= link_to 'Edit this team', edit_game_team_path(@game, team) %>
+<%= button_to 'Destroy this team', game_team_path(@game, team), method: :delete %>
+<!--<div id="team-<%#= team.id %>" class="team">-->
+<!--  <button class="remove-team-button" data-controller="edit-team" data-action="edit-team#removeTeam" data-id="<%#= team.id %>">Remove-->
+<!--    team-->
+<!--  </button>-->
+<%# team %>
+<!--  <label for="team-name">Team name: </label>-->
+<!--  <input id="team-<%#= team.id %>-name"  type=text placeholder="Team <%#= i + 1 %>" name="team-name" value="<%#= team.name %>"></input>-->
+<%#= render "pokemons", pokemons: team.pokemons, team_id: team.id %>
+<!--</div>-->

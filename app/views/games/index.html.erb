@@ -1,0 +1,4 @@
+<% @games.each do |game| %>
+ <div><%= link_to game.room_id, game_path(game) %> <%= game.id %> <%= game.room_id %></div>
+  <br>
+<% end %>
