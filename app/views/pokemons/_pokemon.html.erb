@@ -1,8 +1,9 @@
-id <%= pokemon.id %>
-<br>
-name <%= pokemon.nickname %>
-<br>
-alive? <%= pokemon.is_alive %>
-<br>
-<%= link_to 'Edit this pokemon', edit_game_team_pokemon_path(@game, team, pokemon) %>
-<%= button_to 'Destroy this pokemon', game_team_pokemon_path(@game, team, pokemon), method: :delete %>
+<div class="pokemon">
+  <img class="pokemon-sprite" width="96" height="96" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png"/>
+  <div>id <%= pokemon.id %></div>
+  <div>name <%= pokemon.nickname %></div>
+  <div>alive? <%= pokemon.is_alive %></div>
+  <%= link_to 'Edit this pokemon', edit_game_team_pokemon_path(@game, team, pokemon) %>
+  <%= button_to 'Destroy this pokemon', game_team_pokemon_path(@game, team, pokemon), method: :delete %>
+
+</div>

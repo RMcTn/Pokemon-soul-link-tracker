@@ -7,6 +7,9 @@ class Pokemon < ApplicationRecord
   attribute :pokedex_id, :integer, default: 1
   attribute :is_alive, :boolean, default: true
 
+  scope :alive, -> { where(is_alive: true) }
+  scope :dead, -> { where(is_alive: false) }
+
   # TODO: CSV Export feature just to get pokemon names, pokedex id, and links?
 
 end

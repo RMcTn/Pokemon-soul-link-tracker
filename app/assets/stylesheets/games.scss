@@ -33,12 +33,12 @@
   border-bottom: 3px solid black;
 }
 
-.pokemon-container {
+.pokemons-container {
   display: flex;
   flex-direction: column;
 }
 
-.dead-container {
+.dead-pokemons-container {
   border: 3px solid #e63946;
   background-color: #e63946;
 }
@@ -50,6 +50,7 @@
 
 .pokemon {
   display: flex;
+  flex-direction: column;
 }
 
 .pokemon-inputs {

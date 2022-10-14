@@ -1,13 +1,22 @@
-Team <%= team.id %>
-<br>
-name <%= team.name %>
-<br>
-Belongs to game <%= team.game.room_id %>
-<%= link_to 'Edit this team', edit_game_team_path(@game, team) %>
-<%= button_to 'Destroy this team', game_team_path(@game, team), method: :delete %>
-<%= button_to 'New pokemon', game_team_pokemons_path(@game, team), method: :post %>
+<div class="team">
+  Team <%= team.id %>
+  <br>
+  name <%= team.name %>
+  <br>
+  <%= link_to 'Edit this team', edit_game_team_path(@game, team) %>
+  <%= button_to 'Destroy this team', game_team_path(@game, team), method: :delete, class: "remove-team-button" %>
+  <% if team.pokemons.count < 100 %>
+    <%= button_to 'New pokemon', game_team_pokemons_path(@game, team), method: :post %>
+  <% end %>
 
-<%= render team.pokemons, team: team %>
+  <div class="pokemons-container">
+    <%= render team.pokemons.alive, team: team %>
+  </div>
+
+  <div class="dead-pokemons-container">
+    <%= render team.pokemons.dead, team: team %>
+  </div>
+</div>
 <!--<div id="team-<%#= team.id %>" class="team">-->
 <!--  <button class="remove-team-button" data-controller="edit-team" data-action="edit-team#removeTeam" data-id="<%#= team.id %>">Remove-->
 <!--    team-->

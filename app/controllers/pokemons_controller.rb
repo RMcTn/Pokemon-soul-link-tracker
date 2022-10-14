@@ -20,6 +20,7 @@ class PokemonsController < ApplicationController
     @pokemon = @team.pokemons.create
     @pokemon.link_row = LinkRow.first # TODO(reece): Temporary for now until we start creating a pokemon for each team.
     # Separate controller for that?
+    # TODO(reece): Add 100 pokemon limit to a team on the model
     if @pokemon.save
       redirect_to game_url(@game)
     else
