@@ -17,8 +17,9 @@
   </div>
 <% end %>
 
-
-<%= button_to 'New team', game_teams_path(@game), method: :post %>
+<% if @game.teams.count < 6 %>
+  <%= button_to 'New team', game_teams_path(@game), method: :post %>
+<% end %>
 
 <div class="teams-container">
   <%= render @game.teams %>

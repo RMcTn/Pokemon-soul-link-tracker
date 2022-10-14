@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
   end
 
   def set_team
-    @team = Team.includes(:pokemons).find(params[:id])
+    @team = Team.find(params[:id])
   end
 
   def team_params
