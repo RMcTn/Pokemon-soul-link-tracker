@@ -9,6 +9,7 @@ class Pokemon < ApplicationRecord
 
   scope :alive, -> { where(is_alive: true) }
   scope :dead, -> { where(is_alive: false) }
+  scope :boxed, -> { where(is_boxed: true) }
 
   # TODO: CSV Export feature just to get pokemon names, pokedex id, and links?
 
