@@ -14,5 +14,6 @@
 <% end %>
 
 
+<%= button_to 'New team', game_teams_path(@game), method: :post %>
 <%= render @game.teams %>
 <%#= render partial: "teams", locals: {teams: @game.teams} %>

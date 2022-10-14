@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # get '/:gameId', to: 'games#show'
 
   resources :games, param: :room_id do
-    resources :teams
+    resources :teams do
+      resources :pokemons
+    end
   end
 end

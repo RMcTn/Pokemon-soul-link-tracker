@@ -29,7 +29,6 @@ class GamesController < ApplicationController
   private
 
   def set_game
-    @game = Game.find_by(room_id: params[:room_id])
+    @game = Game.includes(teams: :pokemons).find_by(room_id: params[:room_id])
   end
-
 end

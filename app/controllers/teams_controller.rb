@@ -15,10 +15,9 @@ class TeamsController < ApplicationController
   end
 
   def create
-    # Get game_id from params
-    @team = @game.teams.create(team_params)
+    @team = @game.teams.create
     if @team.save
-      redirect_to game_team_url(@game, @team)
+      redirect_to game_url(@game)
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,7 +47,7 @@ class TeamsController < ApplicationController
   end
 
   def set_team
-    @team = Team.find(params[:id])
+    @team = Team.includes(:pokemons).find(params[:id])
   end
 
   def team_params

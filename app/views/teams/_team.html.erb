@@ -5,6 +5,9 @@ name <%= team.name %>
 Belongs to game <%= team.game.room_id %>
 <%= link_to 'Edit this team', edit_game_team_path(@game, team) %>
 <%= button_to 'Destroy this team', game_team_path(@game, team), method: :delete %>
+<%= button_to 'New pokemon', game_team_pokemons_path(@game, team), method: :post %>
+
+<%= render team.pokemons, team: team %>
 <!--<div id="team-<%#= team.id %>" class="team">-->
 <!--  <button class="remove-team-button" data-controller="edit-team" data-action="edit-team#removeTeam" data-id="<%#= team.id %>">Remove-->
 <!--    team-->
