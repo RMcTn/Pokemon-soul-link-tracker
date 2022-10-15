@@ -22,6 +22,6 @@
 <% end %>
 
 <%= turbo_stream_from @game %>
-<div class="teams-container">
+<div id="teams" class="teams-container">
   <%= render @game.teams.order_by_id, game: @game %>
 </div>
