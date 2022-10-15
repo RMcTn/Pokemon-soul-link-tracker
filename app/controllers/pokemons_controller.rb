@@ -60,6 +60,6 @@ class PokemonsController < ApplicationController
   end
 
   def pokemon_params
-    params.require(:pokemon).permit(:game_room_id, :team_id, :nickname)
+    params.require(:pokemon).permit(:game_room_id, :team_id, :nickname, :is_alive, :is_boxed)
   end
 end

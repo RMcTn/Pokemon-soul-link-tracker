@@ -27,10 +27,12 @@ class TeamsController < ApplicationController
   end
 
   def update
-    if @team.update(team_params)
-      redirect_to game_url(@game)
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @team.update(team_params)
+        format.html { redirect_to game_url(@game) }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 

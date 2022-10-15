@@ -1,3 +1,5 @@
 Update pokemon here
 
-<%= render "form", pokemon: @pokemon %>
+<%= turbo_frame_tag @pokemon do %>
+  <%= render "form", pokemon: @pokemon %>
+<% end %>

@@ -1,3 +1,5 @@
 Update team here
 
-<%= render "form", team: @team %>
+<%= turbo_frame_tag @team do %>
+  <%= render "form", game: @game, team: @team %>
+<% end %>

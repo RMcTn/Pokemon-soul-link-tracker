@@ -10,7 +10,7 @@
     <p>Real time pokemon soul link tracker for up to 6 teams.</p>
     <p>A shared view between all players to help keep track of what pokemon are linked, what pokemon are dead, and what
       pokemon are boxed.</p>
-    <p>Get started by givng each player the above link and clicking the add player button.
+    <p>Get started by giving each player the above link and clicking the add player button.
     <p>
     <p>Maximum of 100 pokemon in a game.</p>
     <p>Games will be deleted after 2 weeks of inactivity</p>
@@ -21,6 +21,7 @@
   <%= button_to 'New team', game_teams_path(@game), method: :post %>
 <% end %>
 
+<%= turbo_stream_from @game %>
 <div class="teams-container">
-  <%= render @game.teams.order_by_id %>
+  <%= render @game.teams.order_by_id, game: @game %>
 </div>
