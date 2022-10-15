@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :games, param: :room_id do
     resources :teams do
       resources :pokemons
+      resources :pokemon_links, only: %i[create destroy]
     end
   end
 end

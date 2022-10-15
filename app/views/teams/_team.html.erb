@@ -7,6 +7,7 @@
   <%= button_to 'Destroy this team', game_team_path(game, team), method: :delete, class: "remove-team-button" %>
   <% if team.pokemons.count < 100 %>
     <%= button_to 'New pokemon', game_team_pokemons_path(game, team), method: :post %>
+    <%= button_to 'New pokemon linked', game_team_pokemon_links_path(game, team), method: :post %>
   <% end %>
 
   <!--  TODO(reece): Not happy with how the pokemon disappear here when editing the team. Need a workaround-->

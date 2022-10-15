@@ -30,14 +30,14 @@ class Pokemon < ApplicationRecord
   after_update_commit do
     broadcast_remove_to(game)
     if alive?
-      broadcast_append_to(game, target: "alive-pokemons", locals: { game: game, team: team })
+      broadcast_append_later_to(game, target: "alive-pokemons", locals: { game: game, team: team })
     elsif dead?
-      broadcast_append_to(game, target: "dead-pokemons", locals: { game: game, team: team })
+      broadcast_append_later_to(game, target: "dead-pokemons", locals: { game: game, team: team })
     elsif boxed?
-      broadcast_append_to(game, target: "boxed-pokemons", locals: { game: game, team: team })
+      broadcast_append_later_to(game, target: "boxed-pokemons", locals: { game: game, team: team })
     end
   end
 
   after_destroy_commit { broadcast_remove_to(game) }
-  after_create_commit { broadcast_append_to(game, locals: { game: game, team: team }) }
+  after_create_commit { broadcast_append_later_to(game, locals: { game: game, team: team }) }
 end

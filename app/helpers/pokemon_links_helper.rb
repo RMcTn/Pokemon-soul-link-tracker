@@ -1,0 +1,2 @@
+module PokemonLinksHelper
+end
