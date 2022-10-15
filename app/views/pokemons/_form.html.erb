@@ -1,4 +1,4 @@
-<%= form_for [@game, @team, pokemon] do |form| %>
+<%= form_for [game, team, pokemon] do |form| %>
   <% if pokemon.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(pokemon.errors.count, "error") %> prohibited this pokemon from being saved:</h2>

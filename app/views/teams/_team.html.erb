@@ -9,16 +9,17 @@
     <%= button_to 'New pokemon', game_team_pokemons_path(game, team), method: :post %>
   <% end %>
 
-  <div class="pokemons-container">
+  <!--  TODO(reece): Not happy with how the pokemon disappear here when editing the team. Need a workaround-->
+  <div id="alive-pokemons" class="alive-pokemons-container">
     <%= render team.pokemons.alive.order_by_id, game: game, team: team %>
   </div>
 
-  <div class="dead-pokemons-container">
+  <div id="dead-pokemons" class="dead-pokemons-container">
     <%= render team.pokemons.dead.order_by_id, game: game, team: team %>
   </div>
 
-  <div class="boxed-pokemons-container">
-    <%= render team.pokemons.boxed.order_by_id, game: game, team: team %>
+  <div id="boxed-pokemons" class="boxed-pokemons-container">
+    <%= render team.pokemons.boxed_and_alive.order_by_id, game: game, team: team %>
   </div>
 <% end %>
 <!--<div id="team-<%#= team.id %>" class="team">-->
